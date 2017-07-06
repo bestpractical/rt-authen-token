@@ -3,6 +3,9 @@ etc/schema.mysql
 etc/schema.Oracle
 etc/schema.Pg
 etc/schema.SQLite
+html/Admin/Users/AuthTokens.html
+html/Callbacks/RT-Authen-Token/Elements/Tabs/Privileged
+html/Prefs/AuthTokens.html
 inc/Module/Install.pm
 inc/Module/Install/Base.pm
 inc/Module/Install/Can.pm

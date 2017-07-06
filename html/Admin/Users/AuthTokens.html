@@ -1,0 +1,17 @@
+<& /Admin/Elements/Header, Title => loc("[_1]'s authentication tokens",$UserObj->Name)  &>
+<& /Elements/Tabs &>
+<& /Elements/ListActions, actions => \@results &>
+
+<%ARGS>
+$id => undef
+</%ARGS>
+<%INIT>
+my @results;
+
+my $UserObj = RT::User->new( $session{'CurrentUser'} );
+$UserObj->Load( $id );
+unless ( $UserObj->id ) {
+    Abort( loc("Couldn't load user #[_1]", $id) );
+}
+$id = $ARGS{'id'} = $UserObj->id;
+</%INIT>

@@ -1,0 +1,8 @@
+<& /Elements/Header, Title => loc('My authentication tokens') &>
+<& /Elements/Tabs &>
+<& /Elements/ListActions, actions => \@results &>
+
+<%INIT>
+my @results;
+my $UserObj = $session{'CurrentUser'}->UserObj;
+</%INIT>
