@@ -16,6 +16,7 @@ meta-spec:
 name: RT-Authen-Token
 no_index:
   directory:
+    - etc
     - inc
 requires:
   perl: 5.8.3
