@@ -6,6 +6,10 @@ etc/schema.SQLite
 html/Admin/Users/AuthTokens.html
 html/Callbacks/RT-Authen-Token/autohandler/Session
 html/Callbacks/RT-Authen-Token/Elements/Tabs/Privileged
+html/Elements/AuthToken/CreateButton
+html/Elements/AuthToken/CreateForm
+html/Elements/AuthToken/CreateResults
+html/Helpers/AuthToken/Create
 html/Prefs/AuthTokens.html
 inc/Module/Install.pm
 inc/Module/Install/Base.pm
@@ -28,3 +32,6 @@ Makefile.PL
 MANIFEST			This list of files
 META.yml
 README
+static/css/rt-authen-token.css
+static/images/loading.gif
+static/js/rt-authen-token.js

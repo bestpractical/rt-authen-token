@@ -9,6 +9,9 @@ RT::System->AddRight(Staff => ManageAuthTokens => 'Manage authentication tokens'
 use RT::AuthToken;
 use RT::AuthTokens;
 
+RT->AddStyleSheets("rt-authen-token.css");
+RT->AddJavaScript("rt-authen-token.js");
+
 =head1 NAME
 
 RT-Authen-Token - token-based authentication

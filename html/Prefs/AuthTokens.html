@@ -2,6 +2,8 @@
 <& /Elements/Tabs &>
 <& /Elements/ListActions, actions => \@results &>
 
+<& /Elements/AuthToken/CreateButton, Owner => $UserObj->id &>
+
 <%INIT>
 my @results;
 my $UserObj = $session{'CurrentUser'}->UserObj;

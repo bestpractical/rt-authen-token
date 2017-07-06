@@ -1,0 +1,9 @@
+<%ARGS>
+$Owner
+</%ARGS>
+<%INIT>
+</%INIT>
+<div class="authtoken-form-container">
+  <& /Elements/AuthToken/CreateForm, Owner => $Owner &>
+</div>
+<button type="submit" class="authtoken-create">Create Auth Token</button>
