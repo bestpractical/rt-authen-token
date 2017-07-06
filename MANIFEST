@@ -10,8 +10,11 @@ html/Elements/AuthToken/CreateButton
 html/Elements/AuthToken/CreateForm
 html/Elements/AuthToken/CreateResults
 html/Elements/AuthToken/List
+html/Elements/AuthToken/ModifyForm
+html/Elements/AuthToken/ModifyResults
 html/Helpers/AuthToken/Create
 html/Helpers/AuthToken/List
+html/Helpers/AuthToken/Modify
 html/Prefs/AuthTokens.html
 inc/Module/Install.pm
 inc/Module/Install/Base.pm

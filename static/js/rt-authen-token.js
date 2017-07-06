@@ -11,6 +11,12 @@ jQuery(function() {
         showModal(jQuery('.authtoken-form-container').html());
     });
 
+    jQuery('.auth-tokens').on('click', '.authtoken-modify', function(e) {
+        e.preventDefault();
+        var container = jQuery(e.currentTarget).closest('li');
+        showModal(container.find('.authtoken-form-container').html());
+    });
+
     var refreshTokenList = function () {
         var list = jQuery('.authtoken-list');
         jQuery.post(
