@@ -6,6 +6,7 @@ package RT::AuthToken;
 use base 'RT::Record';
 
 require RT::User;
+require RT::Util;
 use Digest::SHA 'sha512_hex';
 
 =head1 NAME
@@ -185,7 +186,14 @@ sub IsToken {
     # If it's a new-style (>= RT 4.0) password, it starts with a '!'
     my (undef, $method, @rest) = split /!/, $stored;
     if ($method eq "bcrypt") {
-        return 0 unless $self->_CryptToken_bcrypt($value, @rest) eq $stored;
+        if (RT::Util->can('constant_time_eq')) {
+            return 0 unless RT::Util::constant_time_eq(
+                $self->_CryptToken_bcrypt($value, @rest),
+                $stored,
+            );
+        } else {
+            return 0 unless $self->_CryptToken_bcrypt($value, @rest) eq $stored;
+        }
         # Upgrade to a larger number of rounds if necessary
         return 1 unless $rest[0] < RT->Config->Get('BcryptCost');
     }
