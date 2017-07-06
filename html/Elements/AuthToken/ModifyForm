@@ -47,6 +47,7 @@ Abort("Permission Denied") if !$TokenObj->CurrentUserCanSee;
 
 <div class="buttons">
 <input type="submit" name="Update" value="<&|/l&>Save</&>"></input>
+<input type="submit" name="Revoke" value="<&|/l&>Revoke</&>"></input>
 </div>
 
 <span class="loading"><img src="<%RT->Config->Get('WebPath')%>/static/images/loading.gif" alt="<%loc('Loading')%>" title="<%loc('Loading')%>" /></span>

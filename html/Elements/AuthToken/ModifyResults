@@ -2,6 +2,7 @@
 $Token
 $Description => ''
 $Update => 0
+$Revoke => 0
 </%ARGS>
 <%INIT>
 my $TokenObj = RT::AuthToken->new($session{CurrentUser});
@@ -17,6 +18,9 @@ if ($Update) {
         ($ok, $msg) = $TokenObj->SetDescription($Description);
         $error = $msg if !$ok;
     }
+}
+elsif ($Revoke) {
+    ($ok, $msg) = $TokenObj->Delete;
 }
 </%INIT>
 % if ($error || !$msg) {
