@@ -1,0 +1,28 @@
+<%ARGS>
+$Owner
+</%ARGS>
+<%INIT>
+my $tokens = RT::AuthTokens->new($session{CurrentUser});
+$tokens->LimitOwner(VALUE => $Owner);
+</%INIT>
+<div class="authtoken-list">
+% if ($tokens->Count == 0) {
+  <em><&|/l&>No authentication tokens.</&></em>
+% } else {
+  <ul>
+% while (my $token = $tokens->Next) {
+    <li id="token-<% $token->Id %>">
+      <span class="description"><% $token->Description %></span>
+      <span class="lastused">
+% my $used = $token->LastUsedObj;
+% if ($used->IsSet) {
+       <&|/l, $used->AgeAsString &>used [_1]</&>
+% } else {
+        <&|/l&>never used</&>
+% }
+      </span>
+    </li>
+% }
+  </ul>
+% }
+</div>

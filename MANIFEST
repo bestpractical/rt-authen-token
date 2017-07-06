@@ -9,6 +9,7 @@ html/Callbacks/RT-Authen-Token/Elements/Tabs/Privileged
 html/Elements/AuthToken/CreateButton
 html/Elements/AuthToken/CreateForm
 html/Elements/AuthToken/CreateResults
+html/Elements/AuthToken/List
 html/Helpers/AuthToken/Create
 html/Prefs/AuthTokens.html
 inc/Module/Install.pm

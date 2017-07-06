@@ -31,3 +31,20 @@
     margin-bottom: 15px;
 }
 
+.authtoken-list ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.authtoken-list ul li + li {
+    margin-top: 1em;
+}
+
+.authtoken-list .description {
+    font-weight: bold;
+}
+
+.authtoken-list .lastused {
+    font-style: italic;
+    color: #666;
+}
