@@ -11,6 +11,17 @@ jQuery(function() {
         showModal(jQuery('.authtoken-form-container').html());
     });
 
+    var refreshTokenList = function () {
+        var list = jQuery('.authtoken-list');
+        jQuery.post(
+            RT.Config.WebHomePath + "/Helpers/AuthToken/List",
+            list.data(),
+            function (data) {
+                list.replaceWith(data);
+            }
+        );
+    };
+
     var submitForm = function (form, extraParams) {
         var payload = form.serializeArray();
         if (extraParams) {
@@ -28,6 +39,7 @@ jQuery(function() {
             else {
                 jQuery('#body').append(html);
             }
+            refreshTokenList();
         };
 
         jQuery.ajax({

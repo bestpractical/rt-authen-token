@@ -5,7 +5,9 @@ $Owner
 my $tokens = RT::AuthTokens->new($session{CurrentUser});
 $tokens->LimitOwner(VALUE => $Owner);
 </%INIT>
-<div class="authtoken-list">
+<div class="authtoken-list" data-owner="<% $Owner %>">
+  <span class="loading"><img src="<%RT->Config->Get('WebPath')%>/static/images/loading.gif" alt="<%loc('Loading')%>" title="<%loc('Loading')%>" /></span>
+
 % if ($tokens->Count == 0) {
   <em><&|/l&>No authentication tokens.</&></em>
 % } else {

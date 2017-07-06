@@ -48,3 +48,14 @@
     font-style: italic;
     color: #666;
 }
+
+.authtoken-list .loading {
+    display: none;
+}
+
+.authtoken-list.refreshing {
+    opacity: 0.3;
+}
+.authtoken-list.refreshing .loading {
+    display: inline;
+}
