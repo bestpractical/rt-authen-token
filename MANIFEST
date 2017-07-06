@@ -18,6 +18,8 @@ inc/Module/Install/WriteAll.pm
 inc/unicore/Name.pm
 inc/YAML/Tiny.pm
 lib/RT/Authen/Token.pm
+lib/RT/AuthToken.pm
+lib/RT/AuthTokens.pm
 Makefile.PL
 MANIFEST			This list of files
 META.yml

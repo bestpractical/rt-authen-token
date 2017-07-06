@@ -4,6 +4,11 @@ use warnings;
 
 our $VERSION = '0.01';
 
+RT::System->AddRight(Staff => ManageAuthTokens => 'Manage authentication tokens');
+
+use RT::AuthToken;
+use RT::AuthTokens;
+
 =head1 NAME
 
 RT-Authen-Token - token-based authentication
