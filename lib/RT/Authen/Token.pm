@@ -12,6 +12,36 @@ use RT::AuthTokens;
 RT->AddStyleSheets("rt-authen-token.css");
 RT->AddJavaScript("rt-authen-token.js");
 
+sub UserForAuthString {
+    my $self = shift;
+    my $authstring = shift;
+    my $user = shift;
+
+    my ($user_id, $cleartext_token) = RT::AuthToken->ParseAuthString($authstring);
+    return unless $user_id;
+
+    my $user_obj = RT::CurrentUser->new;
+    $user_obj->Load($user_id);
+    return if !$user_obj->Id || $user_obj->Disabled;
+
+    if (length $user) {
+        my $check_user = RT::CurrentUser->new;
+        $check_user->Load($user);
+        return unless $check_user->Id && $user_obj->Id == $check_user->Id;
+    }
+
+    my $tokens = RT::AuthTokens->new(RT->SystemUser);
+    $tokens->LimitOwner(VALUE => $user_id);
+    while (my $token = $tokens->Next) {
+        if ($token->IsToken($cleartext_token)) {
+            $token->UpdateLastUsed;
+            return ($user_obj, $token);
+        }
+    }
+
+    return;
+}
+
 =head1 NAME
 
 RT-Authen-Token - token-based authentication
