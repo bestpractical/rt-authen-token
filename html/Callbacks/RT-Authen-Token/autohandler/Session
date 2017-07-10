@@ -4,6 +4,11 @@ $pass => ''
 </%ARGS>
 <%INIT>
 return if RT::Interface::Web::_UserLoggedIn();
+
+if ((RT::Interface::Web::RequestENV('HTTP_AUTHORIZATION')||'') =~ /^token (.*)$/i) {
+    $pass ||= $1;
+}
+
 return unless defined $pass;
 
 my ($user_obj, $token) = RT::Authen::Token->UserForAuthString($pass, $user);
