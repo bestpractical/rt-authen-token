@@ -48,7 +48,7 @@ RT-Authen-Token - token-based authentication
 
 =head1 INSTALLATION
 
-RT-Authen-Token requires version RT 4.2.0 or later.
+RT-Authen-Token requires version RT 4.2.5 or later.
 
 =over
 
