@@ -5,7 +5,15 @@ $pass => ''
 <%INIT>
 return if RT::Interface::Web::_UserLoggedIn();
 
-if ((RT::Interface::Web::RequestENV('HTTP_AUTHORIZATION')||'') =~ /^token (.*)$/i) {
+my $get_env = sub {
+    my $key = shift;
+    if (RT::Interface::Web->can('RequestENV')) {
+        return RT::Interface::Web::RequestENV($key)
+    }
+    return $ENV{$key};
+};
+
+if (($get_env->('HTTP_AUTHORIZATION')||'') =~ /^token (.*)$/i) {
     $pass ||= $1;
 }
 
@@ -15,7 +23,7 @@ my ($user_obj, $token) = RT::Authen::Token->UserForAuthString($pass, $user);
 return unless $user_obj;
 
 # log in
-my $remote_addr = RT::Interface::Web::RequestENV('REMOTE_ADDR');
+my $remote_addr = $get_env->('REMOTE_ADDR');
 $RT::Logger->info("Successful login for @{[$user_obj->Name]} from $remote_addr using authentication token #@{[$token->Id]} (\"@{[$token->Description]}\")");
 
 # It's important to nab the next page from the session before we blow
