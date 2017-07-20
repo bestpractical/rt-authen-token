@@ -46,6 +46,31 @@ sub UserForAuthString {
 
 RT-Authen-Token - token-based authentication
 
+=head1 DESCRIPTION
+
+This module adds the ability for users to generate and login with
+authentication tokens. Users with the C<ManageAuthTokens> permission
+will see a new "Auth Tokens" menu item under "Logged in as ____" ->
+Settings. On that page they will be able to generate new tokens and
+modify or revoke existing tokens.
+
+Once you have an authentication token, you may use it in place of a
+password to log into RT. (Additionally, L<RT::Extension::REST2> allows
+for using auth tokens with the C<Authorization: token> HTTP header.) One
+common use case is to use an authentication token as an
+application-specific password, so that you may revoke that application's
+access without disturbing other applications. You also need not change
+your password, since the application never received it.
+
+If you have the C<AdminUsers> permission, along with
+C<ManageAuthTokens>, you may generate, modify, and revoke tokens for
+other users as well by visiting Admin -> Users -> Select -> (user) ->
+Auth Tokens.
+
+Authentication tokens are stored securely (hashed and salted) in the
+database just like passwords, and so cannot be recovered after they are
+generated.
+
 =head1 INSTALLATION
 
 RT-Authen-Token requires version RT 4.2.5 or later.
@@ -59,6 +84,16 @@ RT-Authen-Token requires version RT 4.2.5 or later.
 =item make install
 
 This step may require root permissions.
+
+=item make initdb
+
+Only run this the first time you install this module.
+
+If you run this twice, you will end up with duplicate data
+in your database.
+
+If you are upgrading this module, check for upgrading instructions
+in case changes need to be made to your database.
 
 =item Edit your /opt/rt4/etc/RT_SiteConfig.pm
 
