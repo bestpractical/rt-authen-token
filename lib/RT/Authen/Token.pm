@@ -101,6 +101,13 @@ Add this line:
 
     Plugin( "RT::Authen::Token" );
 
+=item Update your Apache configuration
+
+If you are running RT under Apache, add the following directive to your RT
+Apache configuration to allow RT to access the Authorization header.
+
+    SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+
 =item Restart your webserver
 
 =back
