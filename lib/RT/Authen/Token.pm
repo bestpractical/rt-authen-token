@@ -112,6 +112,14 @@ Apache configuration to allow RT to access the Authorization header.
 
 =back
 
+=head1 CONFIGURATION
+
+If you have a mix of local and external authentication you can disable
+requiring a password to create or edit tokens with the following line
+in /opt/rt4/etc/RT_SiteConfig.pm :
+
+    Set($DisablePasswordForAuthToken, 1);
+
 =head1 AUTHOR
 
 Best Practical Solutions, LLC E<lt>modules@bestpractical.comE<gt>

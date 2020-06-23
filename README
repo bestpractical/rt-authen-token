@@ -55,6 +55,14 @@ INSTALLATION
 
     Restart your webserver
 
+CONFIGURATION
+
+    If you have a mix of local and external authentication you can disable
+    requiring a password to create or edit tokens with the following line
+    in /opt/rt4/etc/RT_SiteConfig.pm :
+
+        Set($DisablePasswordForAuthToken, 1);
+
 AUTHOR
     Best Practical Solutions, LLC <modules@bestpractical.com>
 
