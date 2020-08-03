@@ -1,5 +1,9 @@
 Revision history for RT-Authen-Token
 
+0.04 2020-06-24
+ - Don't require a password for token creation when RT is configured
+   with DisablePasswordForAuthToken set to true
+
 0.03 2017-09-06
  - Don't require a password for token creation when RT is configured
    with External Authentication.
