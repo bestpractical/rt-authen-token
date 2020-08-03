@@ -136,7 +136,7 @@ or via the web at
 
 =head1 COPYRIGHT
 
-This extension is Copyright (C) 2017 Best Practical Solutions, LLC.
+This extension is Copyright (C) 2017-2020 Best Practical Solutions, LLC.
 
 This is free software, licensed under:
 
